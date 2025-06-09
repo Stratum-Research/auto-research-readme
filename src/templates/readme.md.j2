@@ -1,11 +1,14 @@
 <div align="center">
 
-<img src="{{ logo_path }}" alt="{{ title }} Logo" height="100">
 
-# {{ title }}
-{{ tagline }}
+<h1 align="center">
+    <img src="{{ logo_path }}" alt="{{ title }} Logo" height="100">
+    {{ title }}
+</h1>
 
-<img src="{{ banner_path }}" alt="{{ title }} Banner" width="100%" style="max-width: 800px;">
+<h3 align="center">
+    {{ tagline }}
+</h3>
 
 [![License](https://img.shields.io/badge/license-{{ license | replace("-", "--") }}-blue)]({{ license_url }})
 ![Release](https://img.shields.io/badge/release-{{ version }}-green)
@@ -14,23 +17,25 @@
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-{{ hugging_face.type | title }}-orange)](https://huggingface.co/{{ hugging_face.type }}/{{ hugging_face.repo }})
 {% if zenodo and zenodo.record %}[![Zenodo](https://img.shields.io/badge/Zenodo-{{ zenodo.record }}-blue)](https://zenodo.org/record/{{ zenodo.record }}){% endif %}
 
+<img src="{{ banner_path }}" alt="{{ title }} Banner" width="100%" style="max-width: 800px;">
+
 </div>
 
-**Version:** {{ version }}  
-**Published:** {{ published }}  
-**License:** [{{ license }}]({{ license_url }})
-**DOI:** {{ doi }}
-**Github Link:** [{{ github_link }}]({{ github_link }})
-**Hugging Face Link:** [{{ huggingface_link }}]({{ huggingface_link }})
-**Zenodo Link:** [{{ zenodo_link }}]({{ zenodo_link }})
+- **Version:** {{ version }}  
+- **Published:** {{ published }}  
+- **License:** [{{ license }}]({{ license_url }})
+- **DOI:** {{ doi }}
+- **Github Link:** [{{ github_link }}]({{ github_link }})
+- **Hugging Face Link:** [{{ huggingface_link }}]({{ huggingface_link }})
+- **Zenodo Link:** [{{ zenodo_link }}]({{ zenodo_link }})
 
 ## Description
 {{ description }}
 
 ## Contributing
 Contributions are welcome! Feel free to:
-Report issues.
-Create pull requests.
+- Report issues.
+- Create pull requests.
 
 ## Citation
 
