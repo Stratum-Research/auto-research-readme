@@ -26,6 +26,13 @@ github_link: "https://github.com/Stratum-Research/Auto-Open-Research.git"
 huggingface_link: "https://huggingface.co/datasets/stratumresearch/orthoqa-300"
 zenodo_link: "https://zenodo.org/record/12345678"
 
+# For badges
+github:
+  repo: "Stratum-Research/Auto-Open-Research"
+
+zenodo:
+  record: "12345678"
+
 
 # Author Info
 maintainer: "abdullahridwan@gmail.com"
