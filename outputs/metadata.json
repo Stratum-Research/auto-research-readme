@@ -1,0 +1,16 @@
+{
+  "upload_type": "dataset",
+  "publication_date": "2025-06-08",
+  "title": "OrthoQA-300",
+  "creators": [
+    {
+      "name": "Ridwan, Abdullah",
+      "affiliation": "Stratum Research",
+      "orcid": "0000-0002-1825-0097"
+    }
+  ],
+  "description": "A synthetic question-answering dataset focused on orthopedic surgical procedures.",
+  "license": "cc-by-nc-sa-4.0",
+  "keywords": [],
+  "version": "1.0"
+}

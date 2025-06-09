@@ -1,0 +1,37 @@
+title: "OrthoQA-300"
+version: "1.0"
+published: "2025-06-08"
+tagline: "A synthetic question-answering dataset focused on orthopedic surgical procedures."
+description: "A synthetic question-answering dataset focused on orthopedic surgical procedures."
+# Available licenses (most common ones):
+# - mit, apache-2.0, gpl-3.0, lgpl-3.0, mpl-2.0
+# - cc0-1.0, cc-by-4.0, cc-by-sa-4.0, cc-by-nc-4.0, cc-by-nc-sa-4.0
+# Full list: https://docs.github.com/en/rest/licenses
+license: "cc-by-nc-sa-4.0"
+license_url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+source: "Synthetic data generated via LLM prompt templates; no real patient data used."
+doi: "10.57967/hf/0000000"
+
+language: "en"
+logo_path: "./assets/logo.png"
+banner_path: "./assets/github banner.png"
+
+hugging_face:
+  repo: "stratumresearch/orthoqa-300"
+  type: "datasets"  # Options: datasets, models, spaces
+  tags: ["orthopedics", "question-answering", "synthetic-data", "llm-generated", "clinical-nlp"]
+
+# Links
+github_link: "https://github.com/Stratum-Research/Auto-Open-Research.git"
+huggingface_link: "https://huggingface.co/datasets/stratumresearch/orthoqa-300"
+zenodo_link: "https://zenodo.org/record/12345678"
+
+
+# Author Info
+maintainer: "abdullahridwan@gmail.com"
+contributors:
+  - name: "Abdullah Ridwan"
+    orcid: "0000-0002-1825-0097"
+    email: "abdullahridwan@gmail.com"
+    affiliation: "Stratum Research"
+    role: "creator"
