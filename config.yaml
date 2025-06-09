@@ -13,8 +13,8 @@ source: "Synthetic data generated via LLM prompt templates; no real patient data
 doi: "10.57967/hf/0000000"
 
 language: "en"
-logo_path: "./assets/logo.png"
-banner_path: "./assets/github banner.png"
+logo_path: "/assets/logo.png"
+banner_path: "/assets/github banner.png"
 
 hugging_face:
   repo: "stratumresearch/orthoqa-300"

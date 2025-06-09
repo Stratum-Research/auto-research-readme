@@ -1,11 +1,11 @@
 <div align="center">
 
-![OrthoQA-300 Logo](./assets/logo.png)
+![OrthoQA-300 Logo](/assets/logo.png)
 
 # OrthoQA-300
 A synthetic question-answering dataset focused on orthopedic surgical procedures.
 
-![OrthoQA-300 Banner](./assets/github banner.png)
+![OrthoQA-300 Banner](/assets/github banner.png)
 
 [![License](https://img.shields.io/badge/license-cc--by--nc--sa--4.0-blue)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ![Release](https://img.shields.io/badge/release-1.0-green)
