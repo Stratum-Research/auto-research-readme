@@ -1,8 +1,8 @@
 <div align="center">
 
+<img src="{{ logo_path }}" alt="{{ title }} Logo" height="100">
 
 <h1 align="center">
-    <img src="{{ logo_path }}" alt="{{ title }} Logo" height="100">
     {{ title }}
 </h1>
 
@@ -13,9 +13,9 @@
 [![License](https://img.shields.io/badge/license-{{ license | replace("-", "--") }}-blue)]({{ license_url }})
 ![Release](https://img.shields.io/badge/release-{{ version }}-green)
 [![DOI](https://img.shields.io/badge/DOI-{{ doi | replace("/", "%2F") }}-yellow)](https://doi.org/{{ doi }})
-{% if github and github.repo %}[![GitHub](https://img.shields.io/github/stars/{{ github.repo }}?style=social)](https://github.com/{{ github.repo }}){% endif %}
+[![GitHub](https://img.shields.io/github/stars/{{ github.repo }}?style=social)](https://github.com/{{ github.repo }}){% endif %}
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-{{ hugging_face.type | title }}-orange)](https://huggingface.co/{{ hugging_face.type }}/{{ hugging_face.repo }})
-{% if zenodo and zenodo.record %}[![Zenodo](https://img.shields.io/badge/Zenodo-{{ zenodo.record }}-blue)](https://zenodo.org/record/{{ zenodo.record }}){% endif %}
+[![Zenodo](https://img.shields.io/badge/Zenodo-{{ zenodo.record }}-blue)](https://zenodo.org/record/{{ zenodo.record }}){% endif %}
 
 <img src="{{ banner_path }}" alt="{{ title }} Banner" width="100%" style="max-width: 800px;">
 

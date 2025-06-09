@@ -1,8 +1,8 @@
 <div align="center">
 
+<img src="/assets/logo.png" alt="OrthoQA-300 Logo" height="100">
 
 <h1 align="center">
-    <img src="/assets/logo.png" alt="OrthoQA-300 Logo" height="100">
     OrthoQA-300
 </h1>
 
