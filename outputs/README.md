@@ -13,7 +13,6 @@
 [![License](https://img.shields.io/badge/license-cc--by--nc--sa--4.0-blue)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ![Release](https://img.shields.io/badge/release-1.0-green)
 [![DOI](https://img.shields.io/badge/DOI-10.57967%2Fhf%2F0000000-yellow)](https://doi.org/10.57967/hf/0000000)
-[![GitHub](https://img.shields.io/github/stars/Stratum-Research/Auto-Open-Research?style=social)](https://github.com/Stratum-Research/Auto-Open-Research)
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Datasets-orange)](https://huggingface.co/datasets/stratumresearch/orthoqa-300)
 [![Zenodo](https://img.shields.io/badge/Zenodo-12345678-blue)](https://zenodo.org/record/12345678)
 
