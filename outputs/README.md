@@ -24,9 +24,9 @@
 - **Published:** 2025-06-08  
 - **License:** [cc-by-nc-sa-4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 - **DOI:** 10.57967/hf/0000000
-- **Github Link:** [https://github.com/Stratum-Research/Auto-Open-Research.git](https://github.com/Stratum-Research/Auto-Open-Research.git)
-- **Hugging Face Link:** [https://huggingface.co/datasets/stratumresearch/orthoqa-300](https://huggingface.co/datasets/stratumresearch/orthoqa-300)
-- **Zenodo Link:** [https://zenodo.org/record/12345678](https://zenodo.org/record/12345678)
+- **Github Link:** [here](https://github.com/Stratum-Research/Auto-Open-Research.git)
+- **Hugging Face Link:** [here](https://huggingface.co/datasets/stratumresearch/orthoqa-300)
+- **Zenodo Link:** [here](https://zenodo.org/record/12345678)
 
 ## Description
 A synthetic question-answering dataset focused on orthopedic surgical procedures.
