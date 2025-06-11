@@ -1,28 +1,40 @@
-.PHONY: help setup run clean test
+.PHONY: help setup install test clean dev-install publish
 
 help:
-	@echo "Research Publication Generator"
+	@echo "Auto Research README - Pip Package"
 	@echo ""
 	@echo "Available commands:"
-	@echo "  setup  - Install dependencies"
-	@echo "  run    - Generate all publication files"
-	@echo "  clean  - Clean output directory"
-	@echo "  test   - Test the generator"
+	@echo "  setup        - Install package dependencies"
+	@echo "  install      - Install package globally"
+	@echo "  dev-install  - Install package in development mode"
+	@echo "  test         - Test the package"
+	@echo "  clean        - Clean build artifacts"
+	@echo "  publish      - Build and publish to PyPI"
 
 setup:
 	pip install -r requirements.txt
 
-run:
-	python main.py
+install:
+	pip install .
+
+dev-install:
+	pip install -e .
+
+test: dev-install
+	@echo "Testing package installation..."
+	@auto-research-readme --version && echo "Package installed successfully"
+	@echo "Testing init command..."
+	@mkdir -p test-tmp && cd test-tmp && auto-research-readme init && echo "Init command works"
+	@echo "Testing readme generation..."
+	@cd test-tmp && auto-research-readme make readme && echo "README generation works"
+	@rm -rf test-tmp
+	@echo "All tests passed!"
 
 clean:
-	rm -rf outputs/
+	rm -rf build/ dist/ *.egg-info/
+	find . -type d -name __pycache__ -exec rm -rf {} +
+	find . -name "*.pyc" -delete
 
-test: run
-	@echo "Testing file generation..."
-	@test -f outputs/dataset_card.json && echo "✓ HuggingFace card generated"
-	@test -f outputs/metadata.json && echo "✓ Zenodo metadata generated"
-	@test -f outputs/citation.bib && echo "✓ Citation generated"
-	@test -f outputs/LICENSE.md && echo "✓ License generated"
-	@test -f outputs/README.md && echo "✓ README generated"
-	@echo "All files generated successfully!"
+publish: clean
+	python -m build
+	python -m twine upload dist/*

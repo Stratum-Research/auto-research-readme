@@ -10,8 +10,6 @@ from pathlib import Path
 from .generator import (
     load_config,
     generate_readme,
-    generate_huggingface_card,
-    generate_zenodo_metadata,
     generate_citation,
     generate_license,
     write_output,
@@ -19,28 +17,35 @@ from .generator import (
 
 
 def cmd_make_readme(args):
-    """Generate README.md from config."""
+    """Generate README.md and LICENSE in the top level directory."""
     try:
         config = load_config(args.config)
-        content = generate_readme(config)
-        write_output("README.md", content)
-        print("🎉 README.md generated successfully!")
+
+        # generate README.md in current directory
+        readme_content = generate_readme(config)
+        write_output("README.md", readme_content)
+
+        # generate LICENSE in current directory
+        license_content = generate_license(config)
+        write_output("LICENSE", license_content)
+
+        print("✓ Generated README.md")
+        print("✓ Generated LICENSE")
+        print("🎉 Repository files generated successfully!")
     except Exception as e:
-        print(f"❌ Error generating README: {e}", file=sys.stderr)
+        print(f"❌ Error generating files: {e}", file=sys.stderr)
         sys.exit(1)
 
 
 def cmd_make_all(args):
-    """Generate all files from config."""
+    """Generate all repository files from config."""
     try:
         config = load_config(args.config)
 
         generators = {
             "README.md": generate_readme,
-            "dataset_card.json": generate_huggingface_card,
-            "metadata.json": generate_zenodo_metadata,
+            "LICENSE": generate_license,
             "citation.bib": generate_citation,
-            "LICENSE.md": generate_license,
         }
 
         for filename, generator in generators.items():
@@ -50,7 +55,10 @@ def cmd_make_all(args):
             except Exception as e:
                 print(f"❌ Error generating {filename}: {e}", file=sys.stderr)
 
-        print("🎉 All files generated successfully!")
+        print("✓ Generated README.md")
+        print("✓ Generated LICENSE")
+        print("✓ Generated citation.bib")
+        print("🎉 All repository files generated successfully!")
 
     except Exception as e:
         print(f"❌ Error: {e}", file=sys.stderr)
@@ -72,7 +80,7 @@ tagline: "A sample dataset for demonstration"
 description: "This is a sample dataset description. Replace with your actual description."
 doi: "10.5281/zenodo.123456"
 
-# Metadata for HuggingFace/README  
+# metadata for HuggingFace/README  
 language:
   - "en"
 tags:
@@ -85,12 +93,12 @@ size_categories:
 logo_path: "config/assets/logo.png"
 banner_path: "config/assets/banner.png"
 
-# Links
+# links
 github_link: "https://github.com/yourusername/your-repo"
 huggingface_link: "https://huggingface.co/datasets/yourusername/your-dataset"
 zenodo_link: "https://zenodo.org/record/123456"
 
-# Author Info
+# author info
 maintainer: "your.email@example.com"
 contributors:
   - name: "Your Name"
@@ -107,7 +115,7 @@ contributors:
         config_file.write_text(sample_config)
         print("✓ Created config/config.yaml")
 
-    # Create placeholder asset files
+    # create placeholder asset files
     readme_assets = """# Assets Folder
 
 Place your project assets here:
@@ -122,14 +130,14 @@ These will be referenced in your README.md automatically.
     print("\n🎉 Project initialized! Next steps:")
     print("1. Edit config/config.yaml with your project details")
     print("2. Add logo.png and banner.png to config/assets/")
-    print("3. Run 'auto-readme make readme' to generate README.md")
+    print("3. Run 'auto-research-readme make readme' to generate README.md and LICENSE")
 
 
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
         description="Generate consistent, professional READMEs from YAML config",
-        prog="auto-readme",
+        prog="auto-research-readme",
     )
 
     parser.add_argument("--version", action="version", version="%(prog)s 1.0.0")
@@ -143,14 +151,16 @@ def main():
     )
 
     # make readme
-    readme_parser = make_subparsers.add_parser("readme", help="Generate README.md")
+    readme_parser = make_subparsers.add_parser(
+        "readme", help="Generate README.md and LICENSE"
+    )
     readme_parser.add_argument(
         "--config", default="config.yaml", help="Config file path"
     )
     readme_parser.set_defaults(func=cmd_make_readme)
 
     # make all
-    all_parser = make_subparsers.add_parser("all", help="Generate all files")
+    all_parser = make_subparsers.add_parser("all", help="Generate all repository files")
     all_parser.add_argument("--config", default="config.yaml", help="Config file path")
     all_parser.set_defaults(func=cmd_make_all)
 
