@@ -1,3 +1,21 @@
+---
+license: mit
+language:
+- en
+tags:
+- orthopedic
+- orthopedic surgery
+- synthetic
+- structured-data
+- stratum-research
+- question-and-answer
+- q-and-a
+- qa
+pretty_name: orthoqa-300
+size_categories:
+- n<1K
+---
+
 <div align="center">
 
 <img src="/assets/logo.png" alt="OrthoQA-300 Logo" height="150">
@@ -11,8 +29,8 @@
 </h3>
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE.md)
-![Release](https://img.shields.io/badge/release-1.0-green)
-[![Zenodo](https://img.shields.io/badge/Zenodo-Dataset-blue?logo=zenodo&logoColor=white)](https://zenodo.org/record/15636790)
+![Version](https://img.shields.io/badge/release-1.0-green)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.15636790-yellow)](https://doi.org/10.5281/zenodo.15636790)
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Datasets-orange)](https://huggingface.co/datasets/stratumresearch/orthoqa-300)
 
 
@@ -51,3 +69,5 @@ Contributions are welcome! Feel free to:
 
 ## Contact
 If you have any questions, please contact the maintainer at abdullahridwan@gmail.com.
+
+Contact Stratum Research at contact@stratumresearch.com

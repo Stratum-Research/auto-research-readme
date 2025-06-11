@@ -11,12 +11,6 @@
   ],
   "description": "A synthetic question-answering dataset focused on orthopedic surgical procedures.",
   "license": "mit",
-  "keywords": [
-    "orthopedics",
-    "question-answering",
-    "synthetic-data",
-    "llm-generated",
-    "clinical-nlp"
-  ],
+  "keywords": [],
   "version": "1.0"
 }

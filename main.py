@@ -9,6 +9,8 @@ import yaml
 import argparse
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
+from huggingface_hub import create_repo
+from huggingface_hub import HfApi, HfFolder, Repository
 
 
 def load_config(path="config.yaml"):
@@ -98,6 +100,19 @@ def write_output(filename, content):
     output_dir.mkdir(exist_ok=True)
     (output_dir / filename).write_text(content)
     print(f"Generated: {filename}")
+
+
+def push_to_huggingface(config):
+    """Push to Hugging Face."""
+    repo_url = create_repo(name=config.title)
+    artifact_dir = f"./{config.title}"
+    repo = Repository(
+        local_dir=artifact_dir,
+        clone_from=f"stratum-research/{config.title}",
+    )
+    repo.git_add()
+    repo.git_commit("Commit using Auto-Open-Research package")
+    repo.git_push()
 
 
 def main():

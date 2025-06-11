@@ -6,27 +6,29 @@ description: "A synthetic question-answering dataset focused on orthopedic surgi
 source: "Synthetic data generated via LLM prompt templates; no real patient data used."
 doi: "10.5281/zenodo.15636790"
 
+# Metadata for HuggingFace/README
+language:
+  - "en"
+tags:
+  - "orthopedic"
+  - "orthopedic surgery"
+  - "synthetic"
+  - "structured-data"
+  - "stratum-research"
+  - "question-and-answer"
+  - "q-and-a"
+  - "qa"
+size_categories:
+  - "n<1K"
 
-language: "en"
+
 logo_path: "/assets/logo.png"
 banner_path: "/assets/github banner.png"
-
-hugging_face:
-  repo: "stratumresearch/orthoqa-300"
-  type: "datasets"  # Options: datasets, models, spaces
-  tags: ["orthopedics", "question-answering", "synthetic-data", "llm-generated", "clinical-nlp"]
 
 # Links
 github_link: "https://github.com/Stratum-Research/Auto-Open-Research.git"
 huggingface_link: "https://huggingface.co/datasets/stratumresearch/orthoqa-300"
 zenodo_link: "https://zenodo.org/record/12345678"
-
-# For badges
-github:
-  repo: "Stratum-Research/Auto-Open-Research"
-
-zenodo:
-  record: "12345678"
 
 
 # Author Info
