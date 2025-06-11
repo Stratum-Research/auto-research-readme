@@ -10,7 +10,7 @@
     }
   ],
   "description": "A synthetic question-answering dataset focused on orthopedic surgical procedures.",
-  "license": "cc-by-nc-sa-4.0",
+  "license": "mit",
   "keywords": [],
   "version": "1.0"
 }

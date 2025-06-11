@@ -1,6 +1,7 @@
 import json
 from .base import BaseGenerator
 
+
 class HFCardGenerator(BaseGenerator):
     def generate(self):
         card = {
@@ -8,7 +9,7 @@ class HFCardGenerator(BaseGenerator):
             "pretty_name": self.config["tagline"],
             "version": self.config["version"],
             "language": self.config["language"],
-            "license": self.config["license"],
+            "license": "mit",
             "tags": self.config.get("tags", []),
             "description": self.config["description"],
             "authors": [
@@ -16,8 +17,9 @@ class HFCardGenerator(BaseGenerator):
                     "name": c["name"],
                     "email": c["email"],
                     "affiliation": c["affiliation"],
-                    "orcid": c["orcid"]
-                } for c in self.config.get("contributors", [])
-            ]
+                    "orcid": c["orcid"],
+                }
+                for c in self.config.get("contributors", [])
+            ],
         }
         return json.dumps(card, indent=2)

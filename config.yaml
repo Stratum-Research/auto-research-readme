@@ -3,22 +3,8 @@ version: "1.0"
 published: "2025-06-08"
 tagline: "A synthetic question-answering dataset focused on orthopedic surgical procedures."
 description: "A synthetic question-answering dataset focused on orthopedic surgical procedures."
-# Available licenses (most common ones):
-# - mit, apache-2.0, gpl-3.0, lgpl-3.0, mpl-2.0
-# - cc0-1.0, cc-by-4.0, cc-by-sa-4.0, cc-by-nc-4.0, cc-by-nc-sa-4.0
-# Full list: https://docs.github.com/en/rest/licenses
-license: "cc-by-nc-sa-4.0"
-license_url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
 source: "Synthetic data generated via LLM prompt templates; no real patient data used."
-github_repo_zenodo_doi: "10.5281/zenodo.15636790"
-dataset_zenodo_doi: "10.5281/zenodo.15636790"
-
-
-
-# licenses
-dataset_license: "cc-by-nc-sa-4.0"
-code_license: "cc-by-nc-sa-4.0"
-
+doi: "10.5281/zenodo.15636790"
 
 
 language: "en"
