@@ -4,7 +4,13 @@
   "version": "1.0",
   "language": "en",
   "license": "mit",
-  "tags": [],
+  "tags": [
+    "orthopedics",
+    "question-answering",
+    "synthetic-data",
+    "llm-generated",
+    "clinical-nlp"
+  ],
   "description": "A synthetic question-answering dataset focused on orthopedic surgical procedures.",
   "authors": [
     {

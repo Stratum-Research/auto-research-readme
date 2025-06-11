@@ -1,29 +1,28 @@
-# ---------- CONFIG ----------
-CONFIG=config.yaml
+.PHONY: help setup run clean test
 
-# ---------- METADATA GENERATION ----------
-all:
-	python3 src/main.py --config $(CONFIG)
+help:
+	@echo "Research Publication Generator"
+	@echo ""
+	@echo "Available commands:"
+	@echo "  setup  - Install dependencies"
+	@echo "  run    - Generate all publication files"
+	@echo "  clean  - Clean output directory"
+	@echo "  test   - Test the generator"
 
-# hf:
-# 	python3 src/main.py --config $(CONFIG) --target hf
+setup:
+	pip install -r requirements.txt
 
-# zenodo:
-# 	python3 src/main.py --config $(CONFIG) --target zenodo
+run:
+	python main.py
 
-# readme:
-# 	python3 src/main.py --config $(CONFIG) --target readme
-
-# citation:
-# 	python3 src/main.py --config $(CONFIG) --target citation
-
-# ---------- UTILITIES ----------
 clean:
-	rm -f outputs/dataset_card.json outputs/metadata.json outputs/README.md outputs/citation.bib outputs/LICENSE.md
+	rm -rf outputs/
 
-# Run all and stage files for commit
-build-and-stage:
-	make all
-	git add dataset_card.json metadata.json README.md citation.bib LICENSE.md
-
-.PHONY: all hf zenodo readme citation license clean build-and-stage
+test: run
+	@echo "Testing file generation..."
+	@test -f outputs/dataset_card.json && echo "✓ HuggingFace card generated"
+	@test -f outputs/metadata.json && echo "✓ Zenodo metadata generated"
+	@test -f outputs/citation.bib && echo "✓ Citation generated"
+	@test -f outputs/LICENSE.md && echo "✓ License generated"
+	@test -f outputs/README.md && echo "✓ README generated"
+	@echo "All files generated successfully!"
