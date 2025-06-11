@@ -12,9 +12,11 @@
 
 [![License](https://img.shields.io/badge/license-cc--by--nc--sa--4.0-blue)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ![Release](https://img.shields.io/badge/release-1.0-green)
-[![DOI](https://img.shields.io/badge/DOI-10.57967%2Fhf%2F0000000-yellow)](https://doi.org/10.57967/hf/0000000)
+[![DOI](https://img.shields.io/badge/DOI--yellow)](https://doi.org/)
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Datasets-orange)](https://huggingface.co/datasets/stratumresearch/orthoqa-300)
-[![Zenodo](https://img.shields.io/badge/Zenodo-12345678-blue)](https://zenodo.org/record/12345678)
+[![DOI](https://zenodo.org/badge/999932622.svg)](https://doi.org/10.5281/zenodo.15636790)
+[![DOI](https://zenodo.org/badge/999932622.svg)](https://doi.org/10.5281/zenodo.15636790)
+
 
 <img src="/assets/github banner.png" alt="OrthoQA-300 Banner" width="100%" style="max-width: 800px;">
 
@@ -23,7 +25,8 @@
 - **Version:** 1.0  
 - **Published:** 2025-06-08  
 - **License:** [cc-by-nc-sa-4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-- **DOI:** 10.57967/hf/0000000
+- **Code DOI:** 10.5281/zenodo.15636790
+- **Dataset DOI:** 10.5281/zenodo.15636790
 - **Github link** [here](https://github.com/Stratum-Research/Auto-Open-Research.git)
 - **Hugging Face link** [here](https://huggingface.co/datasets/stratumresearch/orthoqa-300)
 - **Zenodo link** [here](https://zenodo.org/record/12345678)
@@ -38,13 +41,27 @@ Contributions are welcome! Feel free to:
 
 ## Citation
 
+Here is the citation for the dataset:
 ```bibtex
-@dataset{ridwan2025orthoqa300,
+@dataset{ridwan2025orthoqa300data,
   author = {Abdullah Ridwan},
   title  = {OrthoQA-300: A synthetic question-answering dataset focused on orthopedic surgical procedures.},
   year   = {2025},
   url    = {https://huggingface.co/datasets/stratumresearch/orthoqa-300},
-  doi    = {10.57967/hf/0000000},
+  doi    = {10.5281/zenodo.15636790},
+  note   = {Version 1.0, Stratum Research}
+}
+```
+
+
+Here is the citation for the code that was used to generate the dataset:
+```bibtex
+@software{ridwan2025orthoqa300code,
+  author = {Abdullah Ridwan},
+  title  = {OrthoQA-300: Code},
+  year   = {2025},
+  url    = {https://github.com/Stratum-Research/Auto-Open-Research.git},
+  doi    = {10.5281/zenodo.15636790},
   note   = {Version 1.0, Stratum Research}
 }
 ```

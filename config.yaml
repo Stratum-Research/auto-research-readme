@@ -10,7 +10,16 @@ description: "A synthetic question-answering dataset focused on orthopedic surgi
 license: "cc-by-nc-sa-4.0"
 license_url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
 source: "Synthetic data generated via LLM prompt templates; no real patient data used."
-doi: "10.57967/hf/0000000"
+github_repo_zenodo_doi: "10.5281/zenodo.15636790"
+dataset_zenodo_doi: "10.5281/zenodo.15636790"
+
+
+
+# licenses
+dataset_license: "cc-by-nc-sa-4.0"
+code_license: "cc-by-nc-sa-4.0"
+
+
 
 language: "en"
 logo_path: "/assets/logo.png"

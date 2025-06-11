@@ -14,7 +14,9 @@
 ![Release](https://img.shields.io/badge/release-{{ version }}-green)
 [![DOI](https://img.shields.io/badge/DOI-{{ doi | replace("/", "%2F") }}-yellow)](https://doi.org/{{ doi }})
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-{{ hugging_face.type | title }}-orange)](https://huggingface.co/{{ hugging_face.type }}/{{ hugging_face.repo }})
-[![Zenodo](https://img.shields.io/badge/Zenodo-{{ zenodo.record }}-blue)](https://zenodo.org/record/{{ zenodo.record }})
+[![DOI](https://zenodo.org/badge/999932622.svg)](https://doi.org/{{ github_repo_zenodo_doi }})
+[![DOI](https://zenodo.org/badge/999932622.svg)](https://doi.org/{{ dataset_zenodo_doi }})
+
 
 <img src="{{ banner_path }}" alt="{{ title }} Banner" width="100%" style="max-width: 800px;">
 
@@ -23,8 +25,13 @@
 - **Version:** {{ version }}  
 - **Published:** {{ published }}  
 - **License:** [{{ license }}]({{ license_url }})
-- **DOI:** {{ doi }}
+- **Code DOI:** {{ github_repo_zenodo_doi }}
+{% if dataset_zenodo_doi -%}
+- **Dataset DOI:** {{ dataset_zenodo_doi }}
+{% endif -%}
+{% if github_link -%}
 - **Github link** [here]({{ github_link }})
+{% endif -%}
 - **Hugging Face link** [here]({{ huggingface_link }})
 - **Zenodo link** [here]({{ zenodo_link }})
 
@@ -38,16 +45,45 @@ Contributions are welcome! Feel free to:
 
 ## Citation
 
+{% if github_repo_zenodo_doi and dataset_zenodo_doi -%}
+
+Here is the citation for the dataset:
+```bibtex
+@dataset{{ '{' }}{{ contributors[0].name.lower().split()[-1] }}{{ published.split('-')[0] }}{{ title.lower().replace('-', '').replace(' ', '') }}data,
+  author = {{ '{' }}{{ contributors[0].name }}{{ '}' }},
+  title  = {{ '{' }}{{ title }}: {{ tagline }}{{ '}' }},
+  year   = {{ '{' }}{{ published.split('-')[0] }}{{ '}' }},
+  url    = {{ '{' }}https://huggingface.co/{{ hugging_face.type }}/{{ hugging_face.repo }}{{ '}' }},
+  doi    = {{ '{' }}{{ dataset_zenodo_doi }}{{ '}' }},
+  note   = {{ '{' }}Version {{ version }}, {{ contributors[0].affiliation }}{{ '}' }}
+}
+```
+
+
+Here is the citation for the code that was used to generate the dataset:
+```bibtex
+@software{{ '{' }}{{ contributors[0].name.lower().split()[-1] }}{{ published.split('-')[0] }}{{ title.lower().replace('-', '').replace(' ', '') }}code,
+  author = {{ '{' }}{{ contributors[0].name }}{{ '}' }},
+  title  = {{ '{' }}{{ title }}: Code{{ '}' }},
+  year   = {{ '{' }}{{ published.split('-')[0] }}{{ '}' }},
+  url    = {{ '{' }}{{ github_link }}{{ '}' }},
+  doi    = {{ '{' }}{{ github_repo_zenodo_doi }}{{ '}' }},
+  note   = {{ '{' }}Version {{ version }}, {{ contributors[0].affiliation }}{{ '}' }}
+}
+```
+
+{% else -%}
 ```bibtex
 @dataset{{ '{' }}{{ contributors[0].name.lower().split()[-1] }}{{ published.split('-')[0] }}{{ title.lower().replace('-', '').replace(' ', '') }},
   author = {{ '{' }}{{ contributors[0].name }}{{ '}' }},
   title  = {{ '{' }}{{ title }}: {{ tagline }}{{ '}' }},
   year   = {{ '{' }}{{ published.split('-')[0] }}{{ '}' }},
   url    = {{ '{' }}https://huggingface.co/{{ hugging_face.type }}/{{ hugging_face.repo }}{{ '}' }},
-  doi    = {{ '{' }}{{ doi }}{{ '}' }},
+  doi    = {{ '{' }}{{ github_repo_zenodo_doi or dataset_zenodo_doi }}{{ '}' }},
   note   = {{ '{' }}Version {{ version }}, {{ contributors[0].affiliation }}{{ '}' }}
 }
 ```
+{% endif -%}
 
 ## Contact
 If you have any questions, please contact the maintainer at {{ maintainer }}.
