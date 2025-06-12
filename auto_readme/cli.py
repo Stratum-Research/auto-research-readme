@@ -1,44 +1,67 @@
 #!/usr/bin/env python3
 """
-Command-line interface for auto-readme-generator.
+Command-line interface for auto-research-readme.
+
+This module provides the main CLI commands for the auto-research-readme package,
+including initialization, README generation, and automation setup.
 """
 
 import argparse
 import sys
 from pathlib import Path
+from typing import Any, Dict
 
 from .generator import (
-    load_config,
-    generate_readme,
     generate_citation,
     generate_license,
+    generate_readme,
+    load_config,
     write_output,
 )
 
+ConfigDict = Dict[str, Any]
 
-def cmd_make_readme(args):
-    """Generate README.md and LICENSE in the top level directory."""
+
+def cmd_make_readme(args: argparse.Namespace) -> None:
+    """
+    Generate README.md and LICENSE in the top level directory.
+
+    Args:
+        args: Command line arguments containing config path.
+
+    Raises:
+        SystemExit: If generation fails.
+    """
     try:
         config = load_config(args.config)
 
-        # generate README.md in current directory
+        # Generate README.md in current directory
         readme_content = generate_readme(config)
         write_output("README.md", readme_content)
 
-        # generate LICENSE in current directory
+        # Generate LICENSE in current directory
         license_content = generate_license(config)
         write_output("LICENSE", license_content)
 
         print("✓ Generated README.md")
         print("✓ Generated LICENSE")
         print("🎉 Repository files generated successfully!")
+
     except Exception as e:
         print(f"❌ Error generating files: {e}", file=sys.stderr)
         sys.exit(1)
 
 
-def cmd_make_all(args):
-    """Generate all repository files from config."""
+def cmd_make_all(args: argparse.Namespace) -> None:
+    """
+    Generate all repository files from config.
+
+    Args:
+        args: Command line arguments containing config path.
+
+    Raises:
+        SystemExit: If generation fails.
+    """
     try:
         config = load_config(args.config)
 
@@ -48,25 +71,35 @@ def cmd_make_all(args):
             "citation.bib": generate_citation,
         }
 
+        generated_files = []
         for filename, generator in generators.items():
             try:
                 content = generator(config)
                 write_output(filename, content)
+                generated_files.append(filename)
             except Exception as e:
                 print(f"❌ Error generating {filename}: {e}", file=sys.stderr)
 
-        print("✓ Generated README.md")
-        print("✓ Generated LICENSE")
-        print("✓ Generated citation.bib")
-        print("🎉 All repository files generated successfully!")
+        if generated_files:
+            for filename in generated_files:
+                print(f"✓ Generated {filename}")
+            print("🎉 All repository files generated successfully!")
+        else:
+            print("❌ No files were generated successfully")
+            sys.exit(1)
 
     except Exception as e:
         print(f"❌ Error: {e}", file=sys.stderr)
         sys.exit(1)
 
 
-def cmd_init(args):
-    """Initialize a new project with sample config."""
+def cmd_init(args: argparse.Namespace) -> None:
+    """
+    Initialize a new project with sample config.
+
+    Args:
+        args: Command line arguments (unused for init).
+    """
     config_dir = Path("config")
     config_dir.mkdir(exist_ok=True)
 
@@ -80,7 +113,7 @@ tagline: "A sample dataset for demonstration"
 description: "This is a sample dataset description. Replace with your actual description."
 doi: "10.5281/zenodo.123456"
 
-# metadata for HuggingFace/README  
+# Metadata for HuggingFace/README
 language:
   - "en"
 tags:
@@ -93,12 +126,12 @@ size_categories:
 logo_path: "config/assets/logo.png"
 banner_path: "config/assets/banner.png"
 
-# links
+# Links
 github_link: "https://github.com/yourusername/your-repo"
 huggingface_link: "https://huggingface.co/datasets/yourusername/your-dataset"
 zenodo_link: "https://zenodo.org/record/123456"
 
-# author info
+# Author info
 maintainer: "your.email@example.com"
 contributors:
   - name: "Your Name"
@@ -115,7 +148,7 @@ contributors:
         config_file.write_text(sample_config)
         print("✓ Created config/config.yaml")
 
-    # create placeholder asset files
+    # Create placeholder asset files
     readme_assets = """# Assets Folder
 
 Place your project assets here:
@@ -133,7 +166,28 @@ These will be referenced in your README.md automatically.
     print("3. Run 'auto-research-readme make readme' to generate README.md and LICENSE")
 
 
-def main():
+def cmd_automate(args: argparse.Namespace) -> None:
+    """
+    Set up automation integrations.
+
+    Args:
+        args: Command line arguments containing config path.
+
+    Raises:
+        SystemExit: If automation setup fails.
+    """
+    try:
+        from .integrations import setup_all_integrations
+
+        config = load_config(args.config)
+        setup_all_integrations(config)
+
+    except Exception as e:
+        print(f"❌ Error setting up automation: {e}", file=sys.stderr)
+        sys.exit(1)
+
+
+def main() -> None:
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
         description="Generate consistent, professional READMEs from YAML config",
@@ -144,13 +198,13 @@ def main():
 
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
-    # make subcommand
+    # Make subcommand
     make_parser = subparsers.add_parser("make", help="Generate files from config")
     make_subparsers = make_parser.add_subparsers(
         dest="make_what", help="What to generate"
     )
 
-    # make readme
+    # Make readme
     readme_parser = make_subparsers.add_parser(
         "readme", help="Generate README.md and LICENSE"
     )
@@ -159,16 +213,25 @@ def main():
     )
     readme_parser.set_defaults(func=cmd_make_readme)
 
-    # make all
+    # Make all
     all_parser = make_subparsers.add_parser("all", help="Generate all repository files")
     all_parser.add_argument("--config", default="config.yaml", help="Config file path")
     all_parser.set_defaults(func=cmd_make_all)
 
-    # init command
+    # Init command
     init_parser = subparsers.add_parser(
         "init", help="Initialize new project with sample config"
     )
     init_parser.set_defaults(func=cmd_init)
+
+    # Automate command
+    automate_parser = subparsers.add_parser(
+        "automate", help="Set up automation integrations"
+    )
+    automate_parser.add_argument(
+        "--config", default="config.yaml", help="Config file path"
+    )
+    automate_parser.set_defaults(func=cmd_automate)
 
     args = parser.parse_args()
 

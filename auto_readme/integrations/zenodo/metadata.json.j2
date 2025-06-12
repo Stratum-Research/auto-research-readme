@@ -1,0 +1,34 @@
+{
+    "title": "{{ title }}",
+    "description": "{{ description }}",
+    "creators": [
+        {% for author in authors -%}
+        {
+            "name": "{{ author.name }}",
+            {% if author.orcid -%}
+            "orcid": "{{ author.orcid }}",
+            {% endif -%}
+            {% if author.affiliation -%}
+            "affiliation": "{{ author.affiliation }}"
+            {% endif -%}
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ],
+    "access_right": "open",
+    "license": "MIT",
+    "upload_type": "{{ 'software' if type == 'python-package' else 'dataset' }}",
+    {% if keywords -%}
+    "keywords": {{ keywords | tojson }},
+    {% endif -%}
+    {% if repository -%}
+    "related_identifiers": [
+        {
+            "identifier": "{{ repository }}",
+            "relation": "isSupplementTo",
+            "resource_type": "software"
+        }
+    ],
+    {% endif -%}
+    "publication_date": "{{ '2025-01-15' }}",
+    "version": "{{ version | default('1.0.0') }}"
+} 
