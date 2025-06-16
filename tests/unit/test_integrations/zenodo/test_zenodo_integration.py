@@ -4,7 +4,7 @@ Tests for Zenodo integration.
 
 from unittest.mock import MagicMock, patch
 
-from auto_readme.integrations.zenodo.integration import ZenodoIntegration
+from auto_readme.integration.platforms.zenodo.integration import ZenodoIntegration
 from tests.fixtures.configs import DATASET_CONFIG, MINIMAL_CONFIG
 
 

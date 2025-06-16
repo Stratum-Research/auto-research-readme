@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List
 
-from ..base import BaseIntegration, ConfigDict
+from auto_readme.integration.base import BaseIntegration, ConfigDict
 
 
 class ZenodoIntegration(BaseIntegration):

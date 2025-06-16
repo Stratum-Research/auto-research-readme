@@ -4,10 +4,10 @@ Tests for integration discovery system.
 
 from unittest.mock import MagicMock, patch
 
-from auto_readme.integrations import INTEGRATIONS, setup_all_integrations
-from auto_readme.integrations.github.integration import GitHubIntegration
-from auto_readme.integrations.pypi.integration import PyPIIntegration
-from auto_readme.integrations.zenodo.integration import ZenodoIntegration
+from auto_readme.integration import INTEGRATIONS, setup_all_integrations
+from auto_readme.integration.platforms.github.integration import GitHubIntegration
+from auto_readme.integration.platforms.pypi.integration import PyPIIntegration
+from auto_readme.integration.platforms.zenodo.integration import ZenodoIntegration
 from tests.fixtures.configs import DATASET_CONFIG, MINIMAL_CONFIG, PYTHON_PACKAGE_CONFIG
 
 

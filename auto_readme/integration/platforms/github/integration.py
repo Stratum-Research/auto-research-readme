@@ -10,7 +10,7 @@ from typing import List
 
 from jinja2 import Environment, FileSystemLoader
 
-from ..base import BaseIntegration, ConfigDict
+from auto_readme.integration.base import BaseIntegration, ConfigDict
 
 
 class GitHubIntegration(BaseIntegration):

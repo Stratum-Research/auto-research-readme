@@ -1,4 +1,4 @@
-.PHONY: help install install-dev test test-integration clean lint format format-check type-check pre-commit build publish ci dev-setup
+.PHONY: help install install-dev test test-integration clean lint format format-check type-check pre-commit build publish ci dev-setup release
 
 help:  ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -73,3 +73,6 @@ dev-setup:  ## Complete development environment setup
 	make install-dev
 	make pre-commit-install
 	@echo "🎉 Development environment ready!"
+
+release:  ## Create a new release based on config.yaml version
+	python auto_readme/integration/release/release.py

@@ -4,7 +4,7 @@ Tests for PyPI integration.
 
 from unittest.mock import MagicMock, patch
 
-from auto_readme.integrations.pypi.integration import PyPIIntegration
+from auto_readme.integration.platforms.pypi.integration import PyPIIntegration
 from tests.fixtures.configs import DATASET_CONFIG, PYTHON_PACKAGE_CONFIG
 
 

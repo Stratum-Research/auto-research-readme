@@ -10,9 +10,9 @@ is auto-discovered and applied based on the project configuration.
 
 from typing import Any, Dict, List
 
-from .github.integration import GitHubIntegration
-from .pypi.integration import PyPIIntegration
-from .zenodo.integration import ZenodoIntegration
+from .platforms.github.integration import GitHubIntegration
+from .platforms.pypi.integration import PyPIIntegration
+from .platforms.zenodo.integration import ZenodoIntegration
 
 ConfigDict = Dict[str, Any]
 

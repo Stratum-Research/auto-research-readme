@@ -4,7 +4,7 @@ Tests for GitHub integration.
 
 from unittest.mock import MagicMock, patch
 
-from auto_readme.integrations.github.integration import GitHubIntegration
+from auto_readme.integration.platforms.github.integration import GitHubIntegration
 from tests.fixtures.configs import DATASET_CONFIG, MINIMAL_CONFIG
 
 

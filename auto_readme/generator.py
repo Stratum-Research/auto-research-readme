@@ -234,4 +234,3 @@ def write_output(
 
     file_path = output_path / filename
     file_path.write_text(content, encoding="utf-8")
-    print(f"✓ Generated: {filename}")
